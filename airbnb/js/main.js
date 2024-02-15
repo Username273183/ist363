@@ -91,6 +91,53 @@ function renderProperties(properties) {
 //     //console.log(data);
 //     renderProperties(data);
 //   });
+const displayCategory = (category, properties) => {
+  const sectionElement = document.createElement('section');
+  sectionElement.classList.add('category');
+
+  const sectionTitle = document.createElement('h2');
+  sectionTitle.textContent = category.label.plural;
+
+  sectionElement.appendChild(sectionTitle);
+
+  // console.log(category.label.singular);
+  //1. filter properties
+  const filteredProperties = properties.filter((property) => {
+    // return true or false
+    return category.label.singular === property.type;
+  });
+
+  filteredProperties.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+
+  // console.log({ filteredProperties });
+  filteredProperties.forEach((property) => {
+    const articleElement = document.createElement('article');
+    articleElement.classList.add('property');
+
+    let propertyHtml = `
+    <h3 class="property--title">${property.name}</h3>
+    <p class="property--description">${property.description}</p>
+    <p class="property--price">${property.price}</p>
+    `;
+
+    articleElement.innerHTML = propertyHtml;
+
+    sectionElement.appendChild(articleElement);
+  }); // end of foreach
+  const articleElement = document.createElement('article');
+  sectionElement.classList.add('article');
+  // 2. loop and append properties
+
+  document.body.appendChild(sectionElement);
+}; // end of displayCategories
 
 Promise.all([
   // fetch 1
@@ -108,14 +155,3 @@ Promise.all([
   .catch((error) => {
     console.error('There was a problem fetching the data:', error);
   });
-
-const displayCategory = (category, properties) => {
-  const sectionElement = document.createElement('section');
-
-  const sectionTitle = document.createElement('h2');
-  sectionTitle.textContent = category.label.plural;
-
-  sectionElement.appendChild(sectionTitle);
-
-  document.body.appendChild(sectionElement);
-}; // end of displayCategories
