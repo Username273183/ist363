@@ -83,6 +83,7 @@ function renderProperties(properties) {
 } // end of renderProperties
 
 // fetch('./js/properties.json')
+
 //   .then((response) => {
 //     return response.json();
 //   })
@@ -155,3 +156,5 @@ Promise.all([
   .catch((error) => {
     console.error('There was a problem fetching the data:', error);
   });
+
+
