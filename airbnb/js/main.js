@@ -3,6 +3,7 @@
 const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 const closeBtn = document.getElementById('closeBtn');
+const contentDiv = document.getElementById('content');
 
 // 'event name', callback function
 menuBtn.addEventListener('click', function () {
@@ -137,7 +138,7 @@ const displayCategory = (category, properties) => {
   sectionElement.classList.add('article');
   // 2. loop and append properties
 
-  document.body.appendChild(sectionElement);
+  contentDiv.appendChild(sectionElement);
 }; // end of displayCategories
 
 Promise.all([
@@ -156,5 +157,3 @@ Promise.all([
   .catch((error) => {
     console.error('There was a problem fetching the data:', error);
   });
-
-
