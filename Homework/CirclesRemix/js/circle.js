@@ -5,8 +5,8 @@ class Circle {
     this.diameter = diameter;
     this.isRising = true;
     this.color = null;
-    this.colorFrom = color(74, 101, 131);
-    this.colorTo = color(113, 121, 161);
+    this.colorFrom = color(random(34, 114), random(61, 131), random(91, 171));
+    this.colorTo = color(random(93, 133), random(81, 161), random(121, 201));
     this.lerpAmount = 0;
     this.active = true;
   }
