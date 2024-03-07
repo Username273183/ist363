@@ -95,14 +95,16 @@ function renderProperties(properties) {
 //   });
 const displayCategory = (category, properties) => {
   const sectionElement = document.createElement('section');
-  sectionElement.classList.add('category');
+  sectionElement.classList.add('slider');
 
-  const sectionTitle = document.createElement('h2');
-  sectionTitle.textContent = category.label.plural;
+  const containerDiv = document.createElement('div');
+  containerDiv.classList.add('slider__container');
 
-  sectionElement.appendChild(sectionTitle);
+  const sliderGrid = document.createElement('div');
+  sliderGrid.classList.add('slider')
+  // sectionTitle.textContent = category.label.plural;
 
-  // console.log(category.label.singular);
+  // containerDiv.appendChild(sectionTitle);
   //1. filter properties
   const filteredProperties = properties.filter((property) => {
     // return true or false
